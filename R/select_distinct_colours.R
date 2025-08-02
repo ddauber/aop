@@ -23,7 +23,13 @@ select_distinct_colours <- function(palette, k) {
   }
 
   # Step 1: Convert palette to Lab space
-  lab <- farver::convert_colour(palette, from = "rgb", to = "lab")
+  rgb <- t(grDevices::col2rgb(palette)) # convert hex → RGB
+  lab <- farver::convert_colour(rgb, from = "rgb", to = "lab")
+
+  ## Ensure the Lab matrix is numeric and contains no missing values
+  if (!is.matrix(lab) || !is.numeric(lab) || anyNA(lab)) {
+    stop("Converted Lab matrix must be numeric and free of NA values.")
+  }
 
   # Step 2: Distance matrix
   dist_matrix <- as.matrix(farver::compare_colour(lab, lab, from_space = "lab"))
