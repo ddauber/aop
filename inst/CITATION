@@ -1,0 +1,10 @@
+citHeader("To cite the 'aop' package in publications, please use:")
+
+bibentry(
+  "Manual",
+  title = "aop: The companion app for the book The Anatomy of Plots.",
+  author = person("Daniel", "Dauber"),
+  year = 2025,
+  note = "R package version 0.1.0",
+  url = "https://github.com/ddauber/aop"
+)
