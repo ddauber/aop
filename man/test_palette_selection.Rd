@@ -12,6 +12,8 @@ test_palette_selection(palette, k = 2, title = NULL, dark_mode = FALSE)
 \item{k}{Number of colours to select}
 
 \item{title}{Optional plot title}
+
+\item{dark_mode}{Logical. If \code{TRUE}, uses a dark background for the plot. Default is \code{FALSE}.}
 }
 \value{
 A ggplot comparing full vs selected palette

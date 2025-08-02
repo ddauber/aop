@@ -1,5 +1,14 @@
 #' Colour scale for Anatomy of Plots palettes
 #'
+#' Applies a custom colour scale using a named palette from the Anatomy of Plots package.
+#' Works with both discrete and continuous scales and supports reversing the palette order.
+#'
+#' @param palette Character string. The name of the palette to use (e.g. `"sunset"`).
+#' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
+#' @param reverse Logical. Whether to reverse the order of colours in the palette.
+#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_colour_gradientn()`.
+#'
+#' @return A `ggplot2` scale object for use in `ggplot2` plots.
 #' @export
 scale_colour_plot <- function(
   palette = "sunset",

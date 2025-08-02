@@ -6,6 +6,19 @@
 \usage{
 scale_fill_plot(palette = "sunset", discrete = TRUE, reverse = FALSE, ...)
 }
+\arguments{
+\item{palette}{Character string. The name of the palette to use (e.g. \code{"sunset"}).}
+
+\item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
+
+\item{reverse}{Logical. Whether to reverse the order of colours in the palette.}
+
+\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_fill_gradientn()}.}
+}
+\value{
+A \code{ggplot2} scale object for use in \code{ggplot2} plots.
+}
 \description{
-Fill scale for Anatomy of Plots palettes
+Applies a custom fill scale using a named palette from the Anatomy of Plots package.
+Works with both discrete and continuous scales and supports reversing the palette order.
 }
