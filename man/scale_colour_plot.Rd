@@ -2,9 +2,12 @@
 % Please edit documentation in R/scale_colour_plot.R
 \name{scale_colour_plot}
 \alias{scale_colour_plot}
+\alias{scale_color_plot}
 \title{Colour scale for Anatomy of Plots palettes}
 \usage{
 scale_colour_plot(palette = "sunset", discrete = TRUE, reverse = FALSE, ...)
+
+scale_color_plot(palette = "sunset", discrete = TRUE, reverse = FALSE, ...)
 }
 \description{
 Colour scale for Anatomy of Plots palettes

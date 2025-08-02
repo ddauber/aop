@@ -25,5 +25,6 @@ scale_colour_plot <- function(
   }
 }
 
+#' @rdname scale_colour_plot
 #' @export
 scale_color_plot <- scale_colour_plot
