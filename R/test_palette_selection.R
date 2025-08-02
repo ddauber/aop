@@ -43,3 +43,6 @@ test_palette_selection <- function(
     ) +
     ggplot2::ggtitle(title %||% "Colour selection")
 }
+
+# Visible binding for global variables.
+utils::globalVariables(c("colour", "group", "index"))
