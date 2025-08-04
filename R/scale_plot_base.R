@@ -1,18 +1,17 @@
-#' Fill scale for Anatomy of Plots palettes
+#' Base scale constructor for Anatomy of Plots palettes
 #'
-#' Applies a custom fill scale using a named palette from the Anatomy of Plots package
-#' or a user-supplied vector of hex colours. Works with both discrete and continuous
-#' scales and supports reversing the palette order. Optionally, selects the most
-#' perceptually distinct colours when fewer are needed.
+#' Internal utility for building `ggplot2` colour or fill scales using either
+#' a built-in palette name or a user-supplied vector of hex colours.
 #'
+#' @param type Either `"fill"` or `"colour"`, determining the aesthetic to scale.
 #' @param palette Character string or vector. Name of a built-in palette (e.g. `"sunset"`)
 #' or a character vector of hex colours.
 #' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
 #' @param reverse Logical. Whether to reverse the palette order.
 #' @param select_distinct Logical. If `TRUE`, maximises colour contrast for discrete palettes.
-#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_fill_gradientn()`.
+#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_*_gradientn()`.
 #'
-#' @return A `ggplot2` scale object for use in `ggplot2` plots.
+#' @return A `ggplot2` scale object for use in plots.
 #' @keywords internal
 scale_plot_base <- function(
   type = c("fill", "colour"),
@@ -48,7 +47,6 @@ scale_plot_base <- function(
 
   crp <- grDevices::colorRampPalette(pal_vector)
 
-  # Construct palette function
   pal_fn <- function(n) {
     if (select_distinct && discrete) {
       return(select_distinct_colours(pal_vector, n))
@@ -60,7 +58,6 @@ scale_plot_base <- function(
     }
   }
 
-  # Return appropriate ggplot2 scale
   if (discrete) {
     ggplot2::discrete_scale(
       aesthetics = type,
@@ -70,20 +67,19 @@ scale_plot_base <- function(
     )
   } else {
     if (type == "fill") {
-      ggplot2::scale_fill_gradientn(
-        colours = crp(256),
-        ...
-      )
+      ggplot2::scale_fill_gradientn(colours = crp(256), ...)
     } else {
-      ggplot2::scale_colour_gradientn(
-        colours = crp(256),
-        ...
-      )
+      ggplot2::scale_colour_gradientn(colours = crp(256), ...)
     }
   }
 }
 
 #' Colour scale for Anatomy of Plots palettes
+#'
+#' Applies a custom colour scale using a named palette from the Anatomy of Plots package
+#' or a user-supplied vector of hex colours. Works with both discrete and continuous
+#' scales and supports reversing the palette order. Optionally, selects the most
+#' perceptually distinct colours when fewer are needed.
 #'
 #' @inheritParams scale_plot_base
 #' @export
@@ -92,6 +88,11 @@ scale_colour_plot <- function(...) {
 }
 
 #' Fill scale for Anatomy of Plots palettes
+#'
+#' Applies a custom fill scale using a named palette from the Anatomy of Plots package
+#' or a user-supplied vector of hex colours. Works with both discrete and continuous
+#' scales and supports reversing the palette order. Optionally, selects the most
+#' perceptually distinct colours when fewer are needed.
 #'
 #' @inheritParams scale_plot_base
 #' @export
