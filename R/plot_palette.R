@@ -15,10 +15,12 @@ plot_palette <- function(
   ensure_contrast = FALSE
 ) {
   type <- match.arg(type)
-  pal <- aop_palettes[[name]]
-  if (is.null(pal)) {
-    stop("Palette not found.")
-  }
+  # pal <- aop_palettes[[name]]
+  # if (is.null(pal)) {
+  #   stop("Palette not found.")
+  # }
+
+  pal <- aop_palette(name)
   if (reverse) {
     pal <- rev(pal)
   }
