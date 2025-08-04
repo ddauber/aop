@@ -7,7 +7,7 @@
 test_palette_selection(palette, k = 2, title = NULL, dark_mode = FALSE)
 }
 \arguments{
-\item{palette}{A character vector of hex colour codes. Must contain valid hex colour codes.}
+\item{palette}{A palette name or a character vector of hex colour codes. Must contain valid hex colour codes.}
 
 \item{k}{Number of colours to select. Must be a single positive integer not exceeding the length of \code{palette}.}
 
@@ -22,5 +22,6 @@ A ggplot comparing full vs selected palette
 Visualize palette and its most distinct subset
 }
 \details{
-Validates inputs and throws informative errors when conditions are not met.
+Validates inputs and throws informative errors when conditions are not met. If \code{palette} is a single
+string, it is treated as a palette name and looked up via \code{aop_palette()}.
 }

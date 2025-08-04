@@ -1,13 +1,14 @@
 #' Visualize palette and its most distinct subset
 #'
-#' @param palette A character vector of hex colour codes. Must contain valid hex colour codes.
+#' @param palette A palette name or a character vector of hex colour codes. Must contain valid hex colour codes.
 #' @param k Number of colours to select. Must be a single positive integer not exceeding the length of `palette`.
 #' @param title Optional plot title
 #' @param dark_mode Logical. If `TRUE`, uses a dark background for the plot. Default is `FALSE`.
 #'
 #' @return A ggplot comparing full vs selected palette
+#' @details Validates inputs and throws informative errors when conditions are not met. If `palette` is a single
+#' string, it is treated as a palette name and looked up via `aop_palette()`.
 #' @export
-#' @details Validates inputs and throws informative errors when conditions are not met.
 
 test_palette_selection <- function(
   palette,
@@ -17,6 +18,15 @@ test_palette_selection <- function(
 ) {
   if (!is.character(palette)) {
     rlang::abort("`palette` must be a character vector.")
+  }
+  if (length(palette) == 1 && !grepl("^#[0-9A-Fa-f]{6}$", palette)) {
+    palette_name <- palette
+    palette <- tryCatch(
+      aop_palette(palette_name),
+      error = function(e) {
+        rlang::abort(sprintf("Palette '%s' not found.", palette_name))
+      }
+    )
   }
   if (any(!grepl("^#[0-9A-Fa-f]{6}$", palette))) {
     rlang::abort("`palette` must contain valid hex colour codes.")
