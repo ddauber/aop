@@ -5,13 +5,22 @@
 \alias{aop_palettes}
 \title{Colour palettes for Anatomy of Plots}
 \format{
-An object of class \code{list} of length 3.
+A tibble with one row per palette and the following columns:
+\describe{
+\item{id}{Unique numeric ID for the palette}
+\item{name}{Name of the palette (e.g. "sunset")}
+\item{length}{Number of colours in the palette}
+\item{mode}{Best suited background: "dark", "light", or "both"}
+\item{mood}{Subjective aesthetic theme, e.g. "warm", "cool", "vibrant"}
+\item{tags}{Character vector of keywords for filtering (e.g. "gradient", "space")}
+\item{hex}{Character vector of hex colour codes}
+}
 }
 \usage{
 aop_palettes
 }
 \description{
-This object contains all named palettes used throughout the package.
+This tibble contains palette name, mode, mood, tags, and hex codes.
 Each palette is a named character vector of hex codes.
 }
 \keyword{internal}

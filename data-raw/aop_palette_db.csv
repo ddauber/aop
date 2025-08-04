@@ -1,0 +1,7 @@
+id,name,length,mode,mood,tags,hex
+1,sunset,5,both,warm,"citrus, bright",#FF5733|#FF8D1A|#FFC300|#DAF7A6|#C70039
+2,ocean,4,dark,cool,"marine, deep",#001F3F|#0074D9|#7FDBFF|#39CCCC
+3,forest,4,light,earthy,"nature, calm",#014421|#2E8B57|#66CDAA|#8FBC8F
+4,violetstorm,5,dark,moody,"purple, storm",#3D2C8D|#5C4D99|#7D6BBA|#A89CC8|#C6BCE4
+5,sunrise,4,both,gentle,"dawn, soft",#FFDAB9|#FFE4B5|#FFDEAD|#F5DEB3
+6,sage,4,both,earthy,"nature, soft, bright",#D8E2DC|#A4C3B2|#6B9080|#2E4C3B
