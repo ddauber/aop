@@ -2,7 +2,7 @@
 % Please edit documentation in R/scale_plot_base.R
 \name{scale_plot_base}
 \alias{scale_plot_base}
-\title{Fill scale for Anatomy of Plots palettes}
+\title{Base scale constructor for Anatomy of Plots palettes}
 \usage{
 scale_plot_base(
   type = c("fill", "colour"),
@@ -14,6 +14,8 @@ scale_plot_base(
 )
 }
 \arguments{
+\item{type}{Either \code{"fill"} or \code{"colour"}, determining the aesthetic to scale.}
+
 \item{palette}{Character string or vector. Name of a built-in palette (e.g. \code{"sunset"})
 or a character vector of hex colours.}
 
@@ -23,15 +25,13 @@ or a character vector of hex colours.}
 
 \item{select_distinct}{Logical. If \code{TRUE}, maximises colour contrast for discrete palettes.}
 
-\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_fill_gradientn()}.}
+\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \verb{ggplot2::scale_*_gradientn()}.}
 }
 \value{
-A \code{ggplot2} scale object for use in \code{ggplot2} plots.
+A \code{ggplot2} scale object for use in plots.
 }
 \description{
-Applies a custom fill scale using a named palette from the Anatomy of Plots package
-or a user-supplied vector of hex colours. Works with both discrete and continuous
-scales and supports reversing the palette order. Optionally, selects the most
-perceptually distinct colours when fewer are needed.
+Internal utility for building \code{ggplot2} colour or fill scales using either
+a built-in palette name or a user-supplied vector of hex colours.
 }
 \keyword{internal}

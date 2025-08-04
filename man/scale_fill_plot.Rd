@@ -7,8 +7,11 @@
 scale_fill_plot(...)
 }
 \arguments{
-\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_fill_gradientn()}.}
+\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \verb{ggplot2::scale_*_gradientn()}.}
 }
 \description{
-Fill scale for Anatomy of Plots palettes
+Applies a custom fill scale using a named palette from the Anatomy of Plots package
+or a user-supplied vector of hex colours. Works with both discrete and continuous
+scales and supports reversing the palette order. Optionally, selects the most
+perceptually distinct colours when fewer are needed.
 }

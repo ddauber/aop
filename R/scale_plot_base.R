@@ -23,13 +23,14 @@ scale_plot_base <- function(
 ) {
   type <- match.arg(type)
 
-  # Retrieve palette using aop_palette(); fall back to supplied vector if not found
-  pal_info <- tryCatch(
-    list(palette = aop_palette(palette), is_named = TRUE),
-    error = function(e) list(palette = palette, is_named = FALSE)
-  )
-  pal_vector <- pal_info$palette
-  is_named_palette <- pal_info$is_named
+  # Retrieve palette using aop_palette() only for single palette names
+  if (length(palette) == 1) {
+    pal_vector <- aop_palette(palette)
+    is_named_palette <- TRUE
+  } else {
+    pal_vector <- palette
+    is_named_palette <- FALSE
+  }
 
   if (
     !is.character(pal_vector) ||
