@@ -15,4 +15,5 @@ RoxygenNote: 7.3.2
 Imports: 
     dplyr,
     farver,
-    ggplot2
+    ggplot2,
+    rlang

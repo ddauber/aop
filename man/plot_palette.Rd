@@ -17,6 +17,9 @@ plot_palette(
 \item{type}{"discrete" or "continuous"}
 
 \item{reverse}{Reverse palette order?}
+
+\item{ensure_contrast}{If \code{TRUE} and using a discrete palette, reorders
+colours to maximise visual contrast using \code{select_distinct_colours()}.}
 }
 \value{
 A function(n) returning n colours

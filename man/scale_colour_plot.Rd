@@ -22,20 +22,21 @@ scale_color_plot(
 )
 }
 \arguments{
-\item{palette}{Character string (name of palette) or vector of hex codes.}
+\item{palette}{Character string or vector. Name of the palette (e.g. \code{"sunset"}) or custom hex colours.}
 
-\item{discrete}{Logical. Use a discrete scale (TRUE, default) or continuous (FALSE).}
+\item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
 
-\item{reverse}{Logical. Whether to reverse the palette.}
+\item{reverse}{Logical. Whether to reverse the palette order.}
 
-\item{select_distinct}{Logical. If TRUE, select most distinct colours (for discrete only).}
+\item{select_distinct}{Logical. If \code{TRUE}, maximises colour contrast for discrete palettes.}
 
-\item{...}{Additional arguments passed to ggplot2 scale functions.}
+\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_colour_gradientn()}.}
 }
 \value{
-A ggplot2 scale object
+A \code{ggplot2} scale object for use in \code{ggplot2} plots.
 }
 \description{
-Applies a custom colour scale using a named palette from the Anatomy of Plots package
-or a user-supplied palette vector. Supports both discrete and continuous scales.
+Applies a custom colour scale using a named palette from the Anatomy of Plots package.
+Works with both discrete and continuous scales and supports reversing the palette order.
+Optionally, selects the most perceptually distinct colours when fewer are needed.
 }

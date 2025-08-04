@@ -7,12 +7,13 @@
 select_distinct_colours(palette, k)
 }
 \arguments{
-\item{palette}{A character vector of hex colour codes}
+\item{palette}{A character vector of hex colour codes.}
 
-\item{k}{Number of colours to select}
+\item{k}{Number of colours to select. Must be a single positive integer.}
 }
 \value{
-A character vector of \code{k} colours from \code{palette}
+A character vector of \code{k} colours from \code{palette}.
+If \code{k} is 1, the first palette colour is returned.
 }
 \description{
 Uses perceptual colour distance (CIE Lab) to choose the most distinct

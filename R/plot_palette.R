@@ -3,6 +3,8 @@
 #' @param name Name of the palette
 #' @param type "discrete" or "continuous"
 #' @param reverse Reverse palette order?
+#' @param ensure_contrast If `TRUE` and using a discrete palette, reorders
+#' colours to maximise visual contrast using `select_distinct_colours()`.
 #' @return A function(n) returning n colours
 #' @keywords internal
 
