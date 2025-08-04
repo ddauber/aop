@@ -45,6 +45,8 @@ scale_plot_base <- function(
     pal_vector <- rev(pal_vector)
   }
 
+  crp <- grDevices::colorRampPalette(pal_vector)
+
   # Construct palette function
   pal_fn <- function(n) {
     if (select_distinct && discrete) {
@@ -53,7 +55,7 @@ scale_plot_base <- function(
     if (n <= length(pal_vector)) {
       pal_vector[1:n]
     } else {
-      grDevices::colorRampPalette(pal_vector)(n)
+      crp(n)
     }
   }
 
@@ -68,12 +70,12 @@ scale_plot_base <- function(
   } else {
     if (type == "fill") {
       ggplot2::scale_fill_gradientn(
-        colours = grDevices::colorRampPalette(pal_vector)(256),
+        colours = crp(256),
         ...
       )
     } else {
       ggplot2::scale_colour_gradientn(
-        colours = grDevices::colorRampPalette(pal_vector)(256),
+        colours = crp(256),
         ...
       )
     }
