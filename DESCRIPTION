@@ -16,4 +16,5 @@ Imports:
     dplyr,
     farver,
     ggplot2,
-    rlang
+    rlang,
+    tibble
