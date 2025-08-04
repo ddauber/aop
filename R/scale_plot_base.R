@@ -5,8 +5,7 @@
 #' hex colours.
 #'
 #' @param type Either `"fill"` or `"colour"`, determining the aesthetic to scale.
-#' @param palette Character string or vector. Name of a palette in
-#' `aop_palettes` (e.g. `"sunset"`) or a character vector of hex colour codes.
+#' @param palette Character string or vector. Name of a palette in `aop_palettes` (e.g. `"sunset"`) or a character vector of hex colour codes.
 #' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
 #' @param reverse Logical. Whether to reverse the palette order.
 #' @param select_distinct Logical. If `TRUE`, maximises colour contrast for discrete palettes.
