@@ -1,11 +1,12 @@
 #' Base scale constructor for Anatomy of Plots palettes
 #'
 #' Internal utility for building `ggplot2` colour or fill scales using either
-#' a built-in palette name or a user-supplied vector of hex colours.
+#' a palette name from the `aop_palettes` tibble or a user-supplied vector of
+#' hex colours.
 #'
 #' @param type Either `"fill"` or `"colour"`, determining the aesthetic to scale.
-#' @param palette Character string or vector. Name of a built-in palette (e.g. `"sunset"`)
-#' or a character vector of hex colours.
+#' @param palette Character string or vector. Name of a palette in
+#' `aop_palettes` (e.g. `"sunset"`) or a character vector of hex colour codes.
 #' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
 #' @param reverse Logical. Whether to reverse the palette order.
 #' @param select_distinct Logical. If `TRUE`, maximises colour contrast for discrete palettes.
@@ -23,13 +24,21 @@ scale_plot_base <- function(
 ) {
   type <- match.arg(type)
 
-  # Retrieve palette using aop_palette() only for single palette names
-  if (length(palette) == 1) {
+  # Retrieve palette using aop_palette() only for recognised palette names
+  if (
+    is.character(palette) &&
+      length(palette) == 1 &&
+      palette %in% aop_palettes$name
+  ) {
     pal_vector <- aop_palette(palette)
     is_named_palette <- TRUE
-  } else {
+  } else if (is.character(palette)) {
     pal_vector <- palette
     is_named_palette <- FALSE
+  } else {
+    stop(
+      "Invalid `palette`: must be a palette name or a character vector of hex colour codes."
+    )
   }
 
   if (
@@ -38,7 +47,7 @@ scale_plot_base <- function(
       any(!grepl("^#[0-9A-Fa-f]{6}$", pal_vector))
   ) {
     stop(
-      "Invalid palette: must be a named palette or a character vector of hex codes."
+      "Invalid palette: must be a palette name or a character vector of hex colour codes."
     )
   }
 

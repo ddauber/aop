@@ -2,7 +2,7 @@
 % Please edit documentation in R/aop_palette.R
 \name{aop_palette}
 \alias{aop_palette}
-\title{Retrieve colours from an aop palette}
+\title{Retrieve colours from an Anatomy of Plots palette}
 \usage{
 aop_palette(name)
 }
@@ -13,5 +13,6 @@ aop_palette(name)
 Character vector of hex colour codes
 }
 \description{
-Retrieve colours from an aop palette
+Looks up \code{name} in the \code{aop_palettes} tibble and returns the
+corresponding vector of hex colour codes.
 }

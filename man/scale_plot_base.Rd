@@ -16,8 +16,8 @@ scale_plot_base(
 \arguments{
 \item{type}{Either \code{"fill"} or \code{"colour"}, determining the aesthetic to scale.}
 
-\item{palette}{Character string or vector. Name of a built-in palette (e.g. \code{"sunset"})
-or a character vector of hex colours.}
+\item{palette}{Character string or vector. Name of a palette in
+\code{aop_palettes} (e.g. \code{"sunset"}) or a character vector of hex colour codes.}
 
 \item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
 
@@ -32,6 +32,7 @@ A \code{ggplot2} scale object for use in plots.
 }
 \description{
 Internal utility for building \code{ggplot2} colour or fill scales using either
-a built-in palette name or a user-supplied vector of hex colours.
+a palette name from the \code{aop_palettes} tibble or a user-supplied vector of
+hex colours.
 }
 \keyword{internal}
