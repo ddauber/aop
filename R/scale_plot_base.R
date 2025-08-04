@@ -24,18 +24,19 @@ scale_plot_base <- function(
 ) {
   type <- match.arg(type)
 
-  # Determine if palette is named or custom
-  is_named_palette <- is.character(palette) &&
-    length(palette) == 1 &&
-    palette %in% names(aop_palettes)
+  # Retrieve palette using aop_palette(); fall back to supplied vector if not found
+  pal_info <- tryCatch(
+    list(palette = aop_palette(palette), is_named = TRUE),
+    error = function(e) list(palette = palette, is_named = FALSE)
+  )
+  pal_vector <- pal_info$palette
+  is_named_palette <- pal_info$is_named
 
-  pal_vector <- if (is_named_palette) {
-    aop_palettes[[palette]]
-  } else {
-    palette
-  }
-
-  if (!is.character(pal_vector) || anyNA(pal_vector)) {
+  if (
+    !is.character(pal_vector) ||
+      anyNA(pal_vector) ||
+      any(!grepl("^#[0-9A-Fa-f]{6}$", pal_vector))
+  ) {
     stop(
       "Invalid palette: must be a named palette or a character vector of hex codes."
     )
