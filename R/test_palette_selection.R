@@ -1,20 +1,34 @@
 #' Visualize palette and its most distinct subset
 #'
-#' @param palette A character vector of hex colour codes
-#' @param k Number of colours to select
+#' @param palette A character vector of hex colour codes. Must contain valid hex colour codes.
+#' @param k Number of colours to select. Must be a single positive integer not exceeding the length of `palette`.
 #' @param title Optional plot title
 #' @param dark_mode Logical. If `TRUE`, uses a dark background for the plot. Default is `FALSE`.
 #'
 #' @return A ggplot comparing full vs selected palette
 #' @export
+#' @details Validates inputs and throws informative errors when conditions are not met.
+
 test_palette_selection <- function(
   palette,
   k = 2,
   title = NULL,
   dark_mode = FALSE
 ) {
-  stopifnot(is.character(palette), k >= 1, k <= length(palette))
-
+  if (!is.character(palette)) {
+    rlang::abort("`palette` must be a character vector.")
+  }
+  if (any(!grepl("^#[0-9A-Fa-f]{6}$", palette))) {
+    rlang::abort("`palette` must contain valid hex colour codes.")
+  }
+  if (
+    length(k) != 1 || !is.numeric(k) || is.na(k) || k <= 0 || k != as.integer(k)
+  ) {
+    rlang::abort("`k` must be a single positive integer.")
+  }
+  if (k > length(palette)) {
+    rlang::abort("`k` must not exceed the length of `palette`.")
+  }
   selected <- select_distinct_colours(palette, k)
 
   df <- dplyr::tibble(
