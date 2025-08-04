@@ -3,9 +3,10 @@
 #' Uses perceptual colour distance (CIE Lab) to choose the most distinct
 #' subset of colours from a palette. Helps ensure clarity for low-k aesthetics.
 #'
-#' @param palette A character vector of hex colour codes
-#' @param k Number of colours to select
-#' @return A character vector of `k` colours from `palette`
+#' @param palette A character vector of hex colour codes.
+#' @param k Number of colours to select. Must be a single positive integer.
+#' @return A character vector of `k` colours from `palette`.
+#'         If `k` is 1, the first palette colour is returned.
 #' @export
 
 select_distinct_colours <- function(palette, k) {
