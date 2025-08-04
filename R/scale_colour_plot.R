@@ -1,36 +1,64 @@
 #' Colour scale for Anatomy of Plots palettes
 #'
-#' Applies a custom colour scale using a named palette from the Anatomy of Plots package.
-#' Works with both discrete and continuous scales and supports reversing the palette order.
+#' Applies a custom colour scale using a named palette from the Anatomy of Plots package
+#' or a user-supplied palette vector. Supports both discrete and continuous scales.
 #'
-#' @param palette Character string. The name of the palette to use (e.g. `"sunset"`).
-#' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
-#' @param reverse Logical. Whether to reverse the order of colours in the palette.
-#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_colour_gradientn()`.
+#' @param palette Character string (name of palette) or vector of hex codes.
+#' @param discrete Logical. Use a discrete scale (TRUE, default) or continuous (FALSE).
+#' @param reverse Logical. Whether to reverse the palette.
+#' @param select_distinct Logical. If TRUE, select most distinct colours (for discrete only).
+#' @param ... Additional arguments passed to ggplot2 scale functions.
 #'
-#' @return A `ggplot2` scale object for use in `ggplot2` plots.
+#' @return A ggplot2 scale object
 #' @export
 scale_colour_plot <- function(
   palette = "sunset",
   discrete = TRUE,
   reverse = FALSE,
+  select_distinct = FALSE,
   ...
 ) {
-  pal <- plot_palette(
-    palette,
-    type = if (discrete) "discrete" else "continuous",
-    reverse = reverse
-  )
+  raw_pal <- if (
+    is.character(palette) &&
+      length(palette) == 1 &&
+      palette %in% names(aop_palettes)
+  ) {
+    plot_palette(
+      palette,
+      type = if (discrete) "discrete" else "continuous",
+      reverse = reverse
+    )
+  } else if (is.character(palette) && all(grepl("^#", palette))) {
+    pal <- palette
+    if (reverse) rev(pal) else pal
+  } else {
+    stop(
+      "Invalid `palette` input. Must be a named palette or a vector of colour hex codes."
+    )
+  }
 
   if (discrete) {
+    pal <- function(n) {
+      if (select_distinct && n < length(raw_pal)) {
+        return(select_distinct_colours(raw_pal, k = n))
+      }
+      if (n <= length(raw_pal)) {
+        return(raw_pal[1:n])
+      }
+      grDevices::colorRampPalette(raw_pal)(n)
+    }
+
     ggplot2::discrete_scale(
       "colour",
-      paste0("plot_", palette),
+      paste0("plot_", as.character(palette)[1]),
       palette = pal,
       ...
     )
   } else {
-    ggplot2::scale_colour_gradientn(colours = pal(256), ...)
+    ggplot2::scale_colour_gradientn(
+      colours = grDevices::colorRampPalette(raw_pal)(256),
+      ...
+    )
   }
 }
 

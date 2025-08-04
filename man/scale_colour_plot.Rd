@@ -5,23 +5,37 @@
 \alias{scale_color_plot}
 \title{Colour scale for Anatomy of Plots palettes}
 \usage{
-scale_colour_plot(palette = "sunset", discrete = TRUE, reverse = FALSE, ...)
+scale_colour_plot(
+  palette = "sunset",
+  discrete = TRUE,
+  reverse = FALSE,
+  select_distinct = FALSE,
+  ...
+)
 
-scale_color_plot(palette = "sunset", discrete = TRUE, reverse = FALSE, ...)
+scale_color_plot(
+  palette = "sunset",
+  discrete = TRUE,
+  reverse = FALSE,
+  select_distinct = FALSE,
+  ...
+)
 }
 \arguments{
-\item{palette}{Character string. The name of the palette to use (e.g. \code{"sunset"}).}
+\item{palette}{Character string (name of palette) or vector of hex codes.}
 
-\item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
+\item{discrete}{Logical. Use a discrete scale (TRUE, default) or continuous (FALSE).}
 
-\item{reverse}{Logical. Whether to reverse the order of colours in the palette.}
+\item{reverse}{Logical. Whether to reverse the palette.}
 
-\item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_colour_gradientn()}.}
+\item{select_distinct}{Logical. If TRUE, select most distinct colours (for discrete only).}
+
+\item{...}{Additional arguments passed to ggplot2 scale functions.}
 }
 \value{
-A \code{ggplot2} scale object for use in \code{ggplot2} plots.
+A ggplot2 scale object
 }
 \description{
-Applies a custom colour scale using a named palette from the Anatomy of Plots package.
-Works with both discrete and continuous scales and supports reversing the palette order.
+Applies a custom colour scale using a named palette from the Anatomy of Plots package
+or a user-supplied palette vector. Supports both discrete and continuous scales.
 }

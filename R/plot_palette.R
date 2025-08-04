@@ -13,7 +13,7 @@ plot_palette <- function(
   ensure_contrast = FALSE
 ) {
   type <- match.arg(type)
-  pal <- plot_palettes[[name]]
+  pal <- aop_palettes[[name]]
   if (is.null(pal)) {
     stop("Palette not found.")
   }
