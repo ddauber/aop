@@ -90,17 +90,25 @@ scale_plot_base <- function(
 #' scales and supports reversing the palette order. Optionally, selects the most
 #' perceptually distinct colours when fewer are needed.
 #'
-#' @param palette Character string or vector. Name of a built-in palette (e.g. `"sunset"`)
-#' or a character vector of hex colours.
-#' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
-#' @param reverse Logical. Whether to reverse the palette order.
-#' @param select_distinct Logical. If `TRUE`, maximises colour contrast for discrete palettes.
-#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_colour_gradientn()`.
+#' @inheritParams scale_plot_base
 #'
 #' @return A `ggplot2` scale object for use in plots.
 #' @export
-scale_colour_plot <- function(...) {
-  scale_plot_base(type = "colour", ...)
+scale_colour_plot <- function(
+  palette = "sunset",
+  discrete = TRUE,
+  reverse = FALSE,
+  select_distinct = FALSE,
+  ...
+) {
+  scale_plot_base(
+    type = "colour",
+    palette = palette,
+    discrete = discrete,
+    reverse = reverse,
+    select_distinct = select_distinct,
+    ...
+  )
 }
 
 #' Fill scale for Anatomy of Plots palettes
@@ -110,15 +118,21 @@ scale_colour_plot <- function(...) {
 #' scales and supports reversing the palette order. Optionally, selects the most
 #' perceptually distinct colours when fewer are needed.
 #'
-#' @param palette Character string or vector. Name of a built-in palette (e.g. `"sunset"`)
-#' or a character vector of hex colours.
-#' @param discrete Logical. Whether to use a discrete scale (`TRUE`, default) or continuous (`FALSE`).
-#' @param reverse Logical. Whether to reverse the palette order.
-#' @param select_distinct Logical. If `TRUE`, maximises colour contrast for discrete palettes.
-#' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_fill_gradientn()`.
-#'
-#' @return A `ggplot2` scale object for use in plots.
+#' @inheritParams scale_plot_base
 #' @export
-scale_fill_plot <- function(...) {
-  scale_plot_base(type = "fill", ...)
+scale_fill_plot <- function(
+  palette = "sunset",
+  discrete = TRUE,
+  reverse = FALSE,
+  select_distinct = FALSE,
+  ...
+) {
+  scale_plot_base(
+    type = "fill",
+    palette = palette,
+    discrete = discrete,
+    reverse = reverse,
+    select_distinct = select_distinct,
+    ...
+  )
 }

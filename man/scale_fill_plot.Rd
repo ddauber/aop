@@ -4,9 +4,23 @@
 \alias{scale_fill_plot}
 \title{Fill scale for Anatomy of Plots palettes}
 \usage{
-scale_fill_plot(...)
+scale_fill_plot(
+  palette = "sunset",
+  discrete = TRUE,
+  reverse = FALSE,
+  select_distinct = FALSE,
+  ...
+)
 }
 \arguments{
+\item{palette}{Character string or vector. Name of a palette in \code{aop_palettes} (e.g. \code{"sunset"}) or a character vector of hex colour codes.}
+
+\item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
+
+\item{reverse}{Logical. Whether to reverse the palette order.}
+
+\item{select_distinct}{Logical. If \code{TRUE}, maximises colour contrast for discrete palettes.}
+
 \item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \verb{ggplot2::scale_*_gradientn()}.}
 }
 \description{

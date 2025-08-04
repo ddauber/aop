@@ -17,3 +17,5 @@ aop_palette <- function(name) {
   pal <- pal |> dplyr::pull(hex) |> purrr::pluck(1)
   pal
 }
+
+utils::globalVariables("hex")

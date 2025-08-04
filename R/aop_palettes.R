@@ -14,6 +14,7 @@
 #'   \item{hex}{Character vector of hex colour codes}
 #' }
 #' @keywords internal
+#' @importFrom tibble tibble
 aop_palettes <- tibble::tibble(
   id = c(1, 2, 3, 4, 5, 6),
   name = c("sunset", "ocean", "forest", "violetstorm", "sunrise", "sage"),

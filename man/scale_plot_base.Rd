@@ -16,8 +16,7 @@ scale_plot_base(
 \arguments{
 \item{type}{Either \code{"fill"} or \code{"colour"}, determining the aesthetic to scale.}
 
-\item{palette}{Character string or vector. Name of a palette in
-\code{aop_palettes} (e.g. \code{"sunset"}) or a character vector of hex colour codes.}
+\item{palette}{Character string or vector. Name of a palette in \code{aop_palettes} (e.g. \code{"sunset"}) or a character vector of hex colour codes.}
 
 \item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
 
