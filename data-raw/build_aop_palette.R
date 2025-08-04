@@ -46,7 +46,7 @@ r_code <- c(
   "#'   \\item{hex}{Character vector of hex colour codes}",
   "#' }",
   "#' @keywords internal",
-  "aop_palette_meta <- tibble::tibble(",
+  "aop_palettes <- tibble::tibble(",
   paste0("  id = c(", paste(meta$id, collapse = ", "), "),"),
   paste0("  name = c(", paste0('"', meta$name, '"', collapse = ", "), "),"),
   paste0("  length = c(", paste(meta$length, collapse = ", "), "),"),
