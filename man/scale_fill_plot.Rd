@@ -4,32 +4,11 @@
 \alias{scale_fill_plot}
 \title{Fill scale for Anatomy of Plots palettes}
 \usage{
-scale_fill_plot(
-  palette = "sunset",
-  discrete = TRUE,
-  reverse = FALSE,
-  select_distinct = FALSE,
-  ...
-)
+scale_fill_plot(...)
 }
 \arguments{
-\item{palette}{Character string or vector. Name of a built-in palette (e.g. \code{"sunset"})
-or a character vector of hex colours.}
-
-\item{discrete}{Logical. Whether to use a discrete scale (\code{TRUE}, default) or continuous (\code{FALSE}).}
-
-\item{reverse}{Logical. Whether to reverse the palette order.}
-
-\item{select_distinct}{Logical. If \code{TRUE}, maximises colour contrast for discrete palettes.}
-
 \item{...}{Additional arguments passed to \code{ggplot2::discrete_scale()} or \code{ggplot2::scale_fill_gradientn()}.}
 }
-\value{
-A \code{ggplot2} scale object for use in \code{ggplot2} plots.
-}
 \description{
-Applies a custom fill scale using a named palette from the Anatomy of Plots package
-or a user-supplied vector of hex colours. Works with both discrete and continuous
-scales and supports reversing the palette order. Optionally, selects the most
-perceptually distinct colours when fewer are needed.
+Fill scale for Anatomy of Plots palettes
 }

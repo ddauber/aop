@@ -13,15 +13,18 @@
 #' @param ... Additional arguments passed to `ggplot2::discrete_scale()` or `ggplot2::scale_fill_gradientn()`.
 #'
 #' @return A `ggplot2` scale object for use in `ggplot2` plots.
-#' @export
-scale_fill_plot <- function(
+#' @keywords internal
+scale_plot_base <- function(
+  type = c("fill", "colour"),
   palette = "sunset",
   discrete = TRUE,
   reverse = FALSE,
   select_distinct = FALSE,
   ...
 ) {
-  # Use user-supplied hex vector directly if not a named palette
+  type <- match.arg(type)
+
+  # Determine if palette is named or custom
   is_named_palette <- is.character(palette) &&
     length(palette) == 1 &&
     palette %in% names(aop_palettes)
@@ -54,18 +57,41 @@ scale_fill_plot <- function(
     }
   }
 
-  # Return appropriate scale
+  # Return appropriate ggplot2 scale
   if (discrete) {
     ggplot2::discrete_scale(
-      "fill",
-      paste0("plot_", if (is_named_palette) palette else "custom"),
+      aesthetics = type,
+      scale_name = paste0("plot_", if (is_named_palette) palette else "custom"),
       palette = pal_fn,
       ...
     )
   } else {
-    ggplot2::scale_fill_gradientn(
-      colours = grDevices::colorRampPalette(pal_vector)(256),
-      ...
-    )
+    if (type == "fill") {
+      ggplot2::scale_fill_gradientn(
+        colours = grDevices::colorRampPalette(pal_vector)(256),
+        ...
+      )
+    } else {
+      ggplot2::scale_colour_gradientn(
+        colours = grDevices::colorRampPalette(pal_vector)(256),
+        ...
+      )
+    }
   }
+}
+
+#' Colour scale for Anatomy of Plots palettes
+#'
+#' @inheritParams scale_plot_base
+#' @export
+scale_colour_plot <- function(...) {
+  scale_plot_base(type = "colour", ...)
+}
+
+#' Fill scale for Anatomy of Plots palettes
+#'
+#' @inheritParams scale_plot_base
+#' @export
+scale_fill_plot <- function(...) {
+  scale_plot_base(type = "fill", ...)
 }
