@@ -1,6 +1,6 @@
 Package: aop
 Title: Anatomy of Plots 
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(
         given = "Daniel",
@@ -18,4 +18,5 @@ Imports:
     ggplot2,
     purrr,
     rlang,
+    stringr,
     tibble
