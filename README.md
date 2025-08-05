@@ -18,8 +18,8 @@ plot design and assessing accessibility in a systematic way.
 
 ## Installation
 
-You can install the development version of aop from
-[GitHub](https://github.com/) with:
+The `aop` package is currently in development. You can install the
+development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
@@ -44,15 +44,18 @@ ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
   scale_colour_plot(palette = "sunset")
 ```
 
+<img src="man/figures/README-example-scale-colour-plot-1.png" width="100%" />
+
 It also enables you to browse palettes systematically by - name, -
 length of colour palettes, - mood (warm, cold, moody, etc.), - mode
 (light or dark), - tags, etc.:
 
 ``` r
 library(aop)
-browse_palettes(mode = "dark",
-                mood = "moody")
+browse_palettes(mode = "dark", mood = "moody")
 ```
+
+<img src="man/figures/README-example-browse-palettes-1.png" width="100%" />
 
 The `aop` package includes a function to identify the most dinstinct
 colours in a palette. For example, if you want to use the most distinct
@@ -62,6 +65,7 @@ use the `select_distinct_colours()` function:
 ``` r
 library(aop)
 select_distinct_colours(aop_palette("sunset"), k = 2)
+#> [1] "#C70039" "#DAF7A6"
 ```
 
 There is also a way to inspect palettes and their distinct colours
@@ -79,7 +83,7 @@ test_palette_selection(
   "sunset",
   k = 2,
   title = "2 Distinct Colours"
-  )
+)
 ```
 
-There are many more functions to come
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
