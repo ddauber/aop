@@ -11,13 +11,15 @@ browse_palettes(
   tags = NULL,
   length = NULL,
   min_length = NULL,
+  max_length = NULL,
   sort_by = c("name", "length", "mood"),
   descending = FALSE,
   ncol = NULL,
   nrow = NULL,
   dark_mode = FALSE,
-  return = c("plot", "tibble", "both"),
-  random = FALSE
+  output = c("plot", "tibble", "both"),
+  random = FALSE,
+  filter_expr = NULL
 )
 }
 \arguments{
@@ -37,6 +39,9 @@ this number of colours are returned.}
 \item{min_length}{Optional integer giving the minimum number of colours
 a palette must contain to be returned.}
 
+\item{max_length}{Optional integer giving the maximum number of colours
+a palette must contain to be returned.}
+
 \item{sort_by}{Variable to sort by. One of "name", "length", or "mood".}
 
 \item{descending}{Logical; if \code{TRUE} sort in descending order.}
@@ -46,15 +51,20 @@ when a plot is produced.}
 
 \item{dark_mode}{Logical. If \code{TRUE}, uses a dark background for the plot.}
 
-\item{return}{One of "plot", "tibble", or "both" indicating the desired
+\item{output}{One of "plot", "tibble", or "both" indicating the desired
 output type.}
 
 \item{random}{Logical; if \code{TRUE}, randomises the order of palettes after
 filtering.}
+
+\item{filter_expr}{Optional quoted expression evaluated as a filter on \code{aop_palettes}.
+This expression is evaluated after all other filters. Available columns:
+\code{name}, \code{mode}, \code{mood}, \code{tags}, \code{length}, \code{id}, \code{hex}.
+Example: \code{"length > 4 & grepl('storm', name)"}}
 }
 \value{
 A ggplot object, a tibble, or a list containing both depending on
-the value of \code{return}.
+the value of \code{output}.
 }
 \description{
 Provides a visual overview of palettes stored in \code{aop_palettes}.

@@ -15,22 +15,29 @@
 #'   this number of colours are returned.
 #' @param min_length Optional integer giving the minimum number of colours
 #'   a palette must contain to be returned.
+#' @param max_length Optional integer giving the maximum number of colours
+#'   a palette must contain to be returned.
 #' @param sort_by Variable to sort by. One of "name", "length", or "mood".
 #' @param descending Logical; if `TRUE` sort in descending order.
 #' @param ncol,nrow Optional layout settings passed to `ggplot2::facet_wrap`
 #'   when a plot is produced.
 #' @param dark_mode Logical. If `TRUE`, uses a dark background for the plot.
-#' @param return One of "plot", "tibble", or "both" indicating the desired
+#' @param output One of "plot", "tibble", or "both" indicating the desired
 #'   output type.
 #' @param random Logical; if `TRUE`, randomises the order of palettes after
 #'   filtering.
+#' @param filter_expr Optional quoted expression evaluated as a filter on `aop_palettes`.
+#'   This expression is evaluated after all other filters. Available columns:
+#'   `name`, `mode`, `mood`, `tags`, `length`, `id`, `hex`.
+#'   Example: `"length > 4 & grepl('storm', name)"`
 #'
 #' @return A ggplot object, a tibble, or a list containing both depending on
-#'   the value of `return`.
+#'   the value of `output`.
 #' @export
 #'
 #' @examples
 #' browse_palettes(mode = "dark", tags = c("storm"))
+
 browse_palettes <- function(
   name = NULL,
   mode = NULL,
@@ -38,48 +45,106 @@ browse_palettes <- function(
   tags = NULL,
   length = NULL,
   min_length = NULL,
+  max_length = NULL,
   sort_by = c("name", "length", "mood"),
   descending = FALSE,
   ncol = NULL,
   nrow = NULL,
   dark_mode = FALSE,
-  return = c("plot", "tibble", "both"),
-  random = FALSE
+  output = c("plot", "tibble", "both"),
+  random = FALSE,
+  filter_expr = NULL
 ) {
   palettes <- aop_palettes
 
   # Filtering ---------------------------------------------------------------
+  # name ----
   if (!is.null(name)) {
-    name <- as.character(name)[1]
-
+    pattern <- stringr::regex(paste(name, collapse = "|"), ignore_case = TRUE)
     palettes <- dplyr::filter(
       palettes,
-      stringr::str_detect(.data$name, stringr::regex(name, ignore_case = TRUE))
+      stringr::str_detect(.data$name, pattern)
     )
   }
+
+  # mode ----
   if (!is.null(mode)) {
-    palettes <- dplyr::filter(palettes, .data$mode %in% mode)
-  }
-
-  if (!is.null(mood)) {
-    palettes <- dplyr::filter(palettes, .data$mood %in% mood)
-  }
-
-  if (!is.null(tags)) {
+    pattern <- stringr::regex(paste(mode, collapse = "|"), ignore_case = TRUE)
     palettes <- dplyr::filter(
       palettes,
-      purrr::map_lgl(.data$tags, ~ all(tags %in% .x))
+      stringr::str_detect(.data$mode, pattern)
     )
   }
 
+  # mood ----
+  if (!is.null(mood)) {
+    pattern <- stringr::regex(paste(mood, collapse = "|"), ignore_case = TRUE)
+    palettes <- dplyr::filter(
+      palettes,
+      stringr::str_detect(.data$mood, pattern)
+    )
+  }
+
+  # tags ----
+  if (!is.null(tags)) {
+    tag_pattern <- stringr::regex(
+      paste(tags, collapse = "|"),
+      ignore_case = TRUE
+    )
+    palettes <- dplyr::filter(
+      palettes,
+      purrr::map_lgl(.data$tags, ~ any(stringr::str_detect(.x, tag_pattern)))
+    )
+  }
+
+  # lengths | min_length | max_length ----
   if (!is.null(length)) {
-    palettes <- dplyr::filter(palettes, .data$length == length)
+    validate_palette_length(
+      palettes,
+      value = length,
+      comparator = "==",
+      var_name = "length"
+    )
+    palettes <- dplyr::filter(palettes, length == {{ length }})
   }
 
   if (!is.null(min_length)) {
-    palettes <- dplyr::filter(palettes, .data$length >= min_length)
+    validate_palette_length(
+      palettes,
+      value = min_length,
+      comparator = ">=",
+      var_name = "min_length"
+    )
+    palettes <- dplyr::filter(palettes, length >= {{ min_length }})
   }
 
+  if (!is.null(max_length)) {
+    validate_palette_length(
+      palettes,
+      value = max_length,
+      comparator = "<=",
+      var_name = "max_length"
+    )
+    palettes <- dplyr::filter(palettes, length <= {{ max_length }})
+  }
+
+  # Optional advanced filtering -----------------------------------------------
+  # Optional custom filter expression (as string)
+  if (!is.null(filter_expr)) {
+    expr <- rlang::parse_expr(filter_expr)
+    palettes <- dplyr::filter(palettes, !!expr)
+
+    if (nrow(palettes) == 0) {
+      rlang::abort(
+        paste0(
+          "No palettes match the filter expression: `",
+          filter_expr,
+          "`.\n",
+          "Try relaxing your conditions or previewing all palettes with `browse_palettes()`."
+        )
+      )
+    }
+  }
   # Sorting ----------------------------------------------------------------
   sort_by <- match.arg(sort_by)
   if (random) {
@@ -90,7 +155,7 @@ browse_palettes <- function(
 
   result_tbl <- palettes
 
-  out_type <- match.arg(return)
+  out_type <- match.arg(output)
   if (out_type %in% c("plot", "both")) {
     df <- purrr::pmap_dfr(
       list(palettes$name, palettes$hex, palettes$length, palettes$mode),
@@ -120,13 +185,13 @@ browse_palettes <- function(
   }
 
   if (out_type == "plot") {
-    return(plt)
+    plt
   } else if (out_type == "tibble") {
-    return(result_tbl)
+    result_tbl
   } else {
-    return(list(plot = plt, tibble = result_tbl))
+    list(plot = plt, tibble = result_tbl)
   }
 }
 
 # Visible binding for global variables.
-utils::globalVariables(c("hex", "label", "index"))
+utils::globalVariables(c(".data", "hex", "label", "index"))
