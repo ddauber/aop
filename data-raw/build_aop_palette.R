@@ -1,9 +1,9 @@
-#' Build aop_palette_meta.R from CSV
-#'
-#' This script reads `aop_palette_db.csv` and outputs `R/aop_palette_meta.R`
-#' with a tibble containing all metadata, including a parsed column of hex colours.
-#' This approach was chosen to enable easier editing upfront.
-#' CONSIDERATION: In the future it might be worth expanding to
+# Build aop_palette_meta.R from CSV
+#
+# This script reads `aop_palette_db.csv` and outputs `R/aop_palette_meta.R`
+# with a tibble containing all metadata, including a parsed column of hex colours.
+# This approach was chosen to enable easier editing upfront.
+# CONSIDERATION: In the future it might be worth expanding metadata
 
 library(readr)
 library(dplyr)

@@ -14,10 +14,16 @@
 #'   \item{hex}{Character vector of hex colour codes}
 #' }
 #' @keywords internal
-#' @importFrom tibble tibble
 aop_palettes <- tibble::tibble(
   id = c(1, 2, 3, 4, 5, 6),
-  name = c("sunset", "ocean", "forest", "violetstorm", "sunrise", "sage"),
+  name = c(
+    "sunset_crimson_warm",
+    "ocean_muted_cool",
+    "forest_muted_earthy",
+    "violetstorm_muted_moody",
+    "sunrise_teal_gentle",
+    "sage_teal_earthy"
+  ),
   length = c(5, 4, 4, 5, 4, 4),
   mode = c("both", "dark", "light", "dark", "both", "both"),
   mood = c("warm", "cool", "earthy", "moody", "gentle", "earthy"),
