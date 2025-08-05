@@ -50,7 +50,12 @@ ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
   scale_colour_plot(palette = "sunset")
 ```
 
-It also enables you to browse palettes systematically by - name, - length of colour palettes, - mood (warm, cold, moody, etc.), - mode (light or dark), - tags, etc.:
+It also enables you to browse palettes systematically by
+
+- name,
+- length of colour palettes,
+- mood (warm, cold, moody, etc.),
+- mode (light or dark), - tags, etc.:
 
 ```{r example-browse-palettes}
 library(aop)

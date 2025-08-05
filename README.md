@@ -46,9 +46,12 @@ ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
 
 <img src="man/figures/README-example-scale-colour-plot-1.png" width="100%" />
 
-It also enables you to browse palettes systematically by - name, -
-length of colour palettes, - mood (warm, cold, moody, etc.), - mode
-(light or dark), - tags, etc.:
+It also enables you to browse palettes systematically by
+
+- name,
+- length of colour palettes,
+- mood (warm, cold, moody, etc.),
+- mode (light or dark), - tags, etc.:
 
 ``` r
 library(aop)
