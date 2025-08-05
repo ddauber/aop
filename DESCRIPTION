@@ -1,13 +1,17 @@
 Package: aop
 Title: Anatomy of Plots 
-Version: 0.1.1
+Version: 0.2.1
 Authors@R: 
     person(
         given = "Daniel",
         family = "Dauber",
         email = "daniel.dauber.io@gmail.com",
-        role = c("aut", "cre"))
+        role = c("aut", "cre", "cph"),
+        comment = c(ORCID = "0000-0003-4324-4796")
+        )
 Description: The Anatomy of Plots package is a companion R package of the corresponding book. It contains helpful functions, ggplot2 themes and colour palettes to design visually impactful plots that support the narrative of the data shown.
+URL: https://github.com/ddauber/aop
+BugReports: https://github.com/ddauber/aop/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

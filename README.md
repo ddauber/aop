@@ -3,10 +3,18 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 <!-- badges: end -->
 
-The `aop` R package is the companion application for the book **The
-Anatomy of Plots**. This package is work in progress.
+## Overview
+
+The `aop` package is the companion to the book *The Anatomy of Plots*.
+It provides colour palettes and ggplot2 scales used throughout the book
+to help design visually impactful plots. The package will include more
+features in the future, such as custom themes and functions to help with
+plot design and assessing accessibility in a systematic way.
 
 ## Installation
 
@@ -14,6 +22,64 @@ You can install the development version of aop from
 [GitHub](https://github.com/) with:
 
 ``` r
+# install.packages("remotes")
+remotes::install_github("ddauber/aop")
+
+# OR
+
 # install.packages("pak")
 pak::pak("ddauber/aop")
 ```
+
+## Example
+
+Here’s how to apply an Anatomy of Plots palette with ggplot2:
+
+``` r
+library(ggplot2)
+library(aop)
+
+ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
+  geom_point(size = 3) +
+  scale_colour_plot(palette = "sunset")
+```
+
+It also enables you to browse palettes systematically by - name, -
+length of colour palettes, - mood (warm, cold, moody, etc.), - mode
+(light or dark), - tags, etc.:
+
+``` r
+library(aop)
+browse_palettes(mode = "dark",
+                mood = "moody")
+```
+
+The `aop` package includes a function to identify the most dinstinct
+colours in a palette. For example, if you want to use the most distinct
+colours from the “sunset” palette included in the aop_palette, you can
+use the `select_distinct_colours()` function:
+
+``` r
+library(aop)
+select_distinct_colours(aop_palette("sunset"), k = 2)
+```
+
+There is also a way to inspect palettes and their distinct colours
+visually. The aop package defines dinstinct colours as those in the
+palette that are perceptually most different from each other using the
+`farver` package to determine colour distances. The
+`test_palette_selection()` function allows you to visually inspect the
+distinct colours in a palette and select the number of colours you want
+to see. For example, to see the two most distinct colours in the
+“sunset” palette, you can use:
+
+``` r
+library(aop)
+test_palette_selection(
+  "sunset",
+  k = 2,
+  title = "2 Distinct Colours"
+  )
+```
+
+There are many more functions to come
