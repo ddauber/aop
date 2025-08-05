@@ -1,6 +1,10 @@
 Package: aop
 Title: Anatomy of Plots 
+<<<<<<< HEAD
 Version: 0.2.1
+=======
+Version: 0.2.0
+>>>>>>> origin/main
 Authors@R: 
     person(
         given = "Daniel",
