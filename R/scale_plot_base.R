@@ -35,7 +35,7 @@ scale_plot_base <- function(
     pal_vector <- palette
     is_named_palette <- FALSE
   } else {
-    stop(
+    cli::cli_abort(
       "Invalid `palette`: must be a palette name or a character vector of hex colour codes."
     )
   }
@@ -45,7 +45,7 @@ scale_plot_base <- function(
       anyNA(pal_vector) ||
       any(!grepl("^#[0-9A-Fa-f]{6}$", pal_vector))
   ) {
-    stop(
+    cli::cli_abort(
       "Invalid palette: must be a palette name or a character vector of hex colour codes."
     )
   }

@@ -9,10 +9,10 @@
 aop_palette <- function(name) {
   pal <- aop_palettes |> dplyr::filter(name == {{ name }})
   if (nrow(pal) == 0) {
-    stop(sprintf("Palette '%s' not found", name))
+    cli::cli_abort("Palette '{name}' not found")
   }
   if (nrow(pal) > 1) {
-    stop(sprintf("Multiple palettes named '%s' found", name))
+    cli::cli_abort("Multiple palettes named '{name}' found")
   }
   pal <- pal |> dplyr::pull(hex) |> purrr::pluck(1)
   pal

@@ -23,16 +23,16 @@ validate_palette_length <- function(
 
   # ---- Type & range check ----
   if (!is.numeric(value) || length(value) != 1 || is.na(value)) {
-    rlang::abort(paste0("`", var_name, "` must be a single numeric value."))
+    cli::cli_abort("`{var_name}` must be a single numeric value.")
   }
 
   if (value < 0) {
-    rlang::abort(paste0("`", var_name, "` must be non-negative."))
+    cli::cli_abort("`{var_name}` must be non-negative.")
   }
 
   # ---- Warnings (shown regardless of match) ----
   if (value > 30) {
-    rlang::warn(paste0("Unusually large value for `", var_name, "`: ", value))
+    cli::cli_warn("Unusually large value for `{var_name}`: {value}")
   }
 
   # ---- Check whether matching palettes exist ----
@@ -46,17 +46,10 @@ validate_palette_length <- function(
 
   if (!has_match) {
     available <- sort(unique(length_vec))
-    rlang::abort(
-      paste0(
-        "No palettes found with ",
-        var_name,
-        " ",
-        comparator,
-        " ",
-        value,
-        ". ",
-        "Available lengths: ",
-        paste(available, collapse = ", ")
+    cli::cli_abort(
+      c(
+        "No palettes found with {var_name} {comparator} {value}.",
+        "i" = "Available lengths: {paste(available, collapse = ', ')}"
       )
     )
   }

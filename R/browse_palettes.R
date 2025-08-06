@@ -135,12 +135,10 @@ browse_palettes <- function(
     palettes <- dplyr::filter(palettes, !!expr)
 
     if (nrow(palettes) == 0) {
-      rlang::abort(
-        paste0(
-          "No palettes match the filter expression: `",
-          filter_expr,
-          "`.\n",
-          "Try relaxing your conditions or previewing all palettes with `browse_palettes()`."
+      cli::cli_abort(
+        c(
+          "No palettes match the filter expression: `{filter_expr}`.",
+          "i" = "Try relaxing your conditions or previewing all palettes with `browse_palettes()`"
         )
       )
     }
