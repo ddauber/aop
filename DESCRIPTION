@@ -1,6 +1,6 @@
 Package: aop
 Title: Anatomy of Plots 
-Version: 0.2.2
+Version: 0.2.3
 Authors@R:
     person(
         given = "Daniel",
