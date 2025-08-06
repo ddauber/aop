@@ -12,23 +12,23 @@
 select_distinct_colours <- function(palette, k) {
   # Input validation
   if (!is.character(palette) || any(is.na(palette))) {
-    stop("Palette must be a character vector of valid hex colours.")
+    cli::cli_abort("Palette must be a character vector of valid hex colours.")
   }
   if (length(palette) < 1) {
-    stop("Palette must contain at least one valid colour.")
+    cli::cli_abort("Palette must contain at least one valid colour.")
   }
   if (length(k) != 1 || !is.numeric(k) || is.na(k) || k != as.integer(k)) {
-    stop("k must be a single positive integer.")
+    cli::cli_abort("k must be a single positive integer.")
   }
   k <- as.integer(k)
   if (k <= 0) {
-    stop("k must be a single positive integer.")
+    cli::cli_abort("k must be a single positive integer.")
   }
   if (k == 1) {
     return(palette[1])
   }
   if (length(palette) < 2) {
-    stop("Palette must contain at least two valid colours for k > 1.")
+    cli::cli_abort("Palette must contain at least two valid colours for k > 1.")
   }
 
   # Shortcut: if palette is shorter than k, interpolate
@@ -42,7 +42,7 @@ select_distinct_colours <- function(palette, k) {
 
   ## Ensure the Lab matrix is numeric and contains no missing values
   if (!is.matrix(lab) || !is.numeric(lab) || anyNA(lab)) {
-    stop("Converted Lab matrix must be numeric and free of NA values.")
+    cli::cli_abort("Converted Lab matrix must be numeric and free of NA values.")
   }
 
   # Step 2: Distance matrix

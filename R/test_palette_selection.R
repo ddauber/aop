@@ -17,27 +17,27 @@ test_palette_selection <- function(
   dark_mode = FALSE
 ) {
   if (!is.character(palette)) {
-    rlang::abort("`palette` must be a character vector.")
+    cli::cli_abort("`palette` must be a character vector.")
   }
   if (length(palette) == 1 && !grepl("^#[0-9A-Fa-f]{6}$", palette)) {
     palette_name <- palette
     palette <- tryCatch(
       aop_palette(palette_name),
       error = function(e) {
-        rlang::abort(sprintf("Palette '%s' not found.", palette_name))
+        cli::cli_abort("Palette '{palette_name}' not found.")
       }
     )
   }
   if (any(!grepl("^#[0-9A-Fa-f]{6}$", palette))) {
-    rlang::abort("`palette` must contain valid hex colour codes.")
+    cli::cli_abort("`palette` must contain valid hex colour codes.")
   }
   if (
     length(k) != 1 || !is.numeric(k) || is.na(k) || k <= 0 || k != as.integer(k)
   ) {
-    rlang::abort("`k` must be a single positive integer.")
+    cli::cli_abort("`k` must be a single positive integer.")
   }
   if (k > length(palette)) {
-    rlang::abort("`k` must not exceed the length of `palette`.")
+    cli::cli_abort("`k` must not exceed the length of `palette`.")
   }
   selected <- select_distinct_colours(palette, k)
 

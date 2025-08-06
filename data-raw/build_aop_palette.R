@@ -25,7 +25,7 @@ export_palette_meta <- function(meta, path = "data-raw/aop_palette_db.csv") {
     )
 
   readr::write_csv(meta_clean, path)
-  message("✅ Palette metadata exported to CSV.")
+  cli::cli_alert_success("Palette metadata exported to CSV.")
 }
 
 # Create the R file output ----
@@ -84,4 +84,4 @@ writeLines(r_code, "R/aop_palettes.R")
 export_palette_meta(meta)
 
 
-message("✅ R/aop_palette_meta.R generated successfully.")
+cli::cli_alert_success("R/aop_palette_meta.R generated successfully.")
