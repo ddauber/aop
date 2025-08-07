@@ -47,7 +47,7 @@ library(aop)
 
 ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
   geom_point(size = 3) +
-  scale_colour_plot(palette = "sunset")
+  scale_colour_plot(palette = "skylight_coral_bright")
 ```
 
 It also enables you to browse palettes systematically by
@@ -62,19 +62,19 @@ library(aop)
 browse_palettes(mode = "dark", mood = "moody")
 ```
 
-The `aop` package includes a function to identify the most dinstinct colours in a palette. For example, if you want to use the most distinct colours from the "sunset" palette included in the aop_palette, you can use the `select_distinct_colours()` function:
+The `aop` package includes a function to identify the most dinstinct colours in a palette. For example, if you want to use the most distinct colours from the "bauhaus_pop_bold" palette included in the aop_palette, you can use the `select_distinct_colours()` function:
 
 ```{r example-select-distinct-colours}
 library(aop)
-select_distinct_colours(aop_palette("sunset"), k = 2)
+select_distinct_colours(aop_palette("bauhaus_pop_bold"), k = 2)
 ```
 
-There is also a way to inspect palettes and their distinct colours visually. The aop package defines dinstinct colours as those in the palette that are perceptually most different from each other using the `farver` package to determine colour distances. The `test_palette_selection()` function allows you to visually inspect the distinct colours in a palette and select the number of colours you want to see. For example, to see the two most distinct colours in the "sunset" palette, you can use:
+There is also a way to inspect palettes and their distinct colours visually. The aop package defines dinstinct colours as those in the palette that are perceptually most different from each other using the `farver` package to determine colour distances. The `test_palette_selection()` function allows you to visually inspect the distinct colours in a palette and select the number of colours you want to see. For example, to see the two most distinct colours in the "twilight_sky_cool" palette, you can use:
 
 ```{r}
 library(aop)
 test_palette_selection(
-  "sunset",
+  "twilight_sky_cool",
   k = 2,
   title = "2 Distinct Colours"
 )

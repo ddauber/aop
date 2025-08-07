@@ -41,7 +41,7 @@ library(aop)
 
 ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) +
   geom_point(size = 3) +
-  scale_colour_plot(palette = "sunset")
+  scale_colour_plot(palette = "skylight_coral_bright")
 ```
 
 <img src="man/figures/README-example-scale-colour-plot-1.png" width="100%" />
@@ -62,13 +62,13 @@ browse_palettes(mode = "dark", mood = "moody")
 
 The `aop` package includes a function to identify the most dinstinct
 colours in a palette. For example, if you want to use the most distinct
-colours from the “sunset” palette included in the aop_palette, you can
-use the `select_distinct_colours()` function:
+colours from the “bauhaus_pop_bold” palette included in the aop_palette,
+you can use the `select_distinct_colours()` function:
 
 ``` r
 library(aop)
-select_distinct_colours(aop_palette("sunset"), k = 2)
-#> [1] "#C70039" "#DAF7A6"
+select_distinct_colours(aop_palette("bauhaus_pop_bold"), k = 2)
+#> [1] "#F2E3D0" "#0D0D0D"
 ```
 
 There is also a way to inspect palettes and their distinct colours
@@ -78,12 +78,12 @@ palette that are perceptually most different from each other using the
 `test_palette_selection()` function allows you to visually inspect the
 distinct colours in a palette and select the number of colours you want
 to see. For example, to see the two most distinct colours in the
-“sunset” palette, you can use:
+“twilight_sky_cool” palette, you can use:
 
 ``` r
 library(aop)
 test_palette_selection(
-  "sunset",
+  "twilight_sky_cool",
   k = 2,
   title = "2 Distinct Colours"
 )
