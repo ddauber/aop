@@ -1,7 +1,51 @@
 id,name,length,mode,mood,tags,hex
-1,sunset_crimson_warm,5,both,warm,"citrus, bright",#FF5733|#FF8D1A|#FFC300|#DAF7A6|#C70039
-2,ocean_muted_cool,4,dark,cool,"marine, deep",#001F3F|#0074D9|#7FDBFF|#39CCCC
-3,forest_muted_earthy,4,light,earthy,"nature, calm",#014421|#2E8B57|#66CDAA|#8FBC8F
-4,violetstorm_muted_moody,5,dark,moody,"purple, storm",#3D2C8D|#5C4D99|#7D6BBA|#A89CC8|#C6BCE4
-5,sunrise_teal_gentle,4,both,gentle,"dawn, soft",#FFDAB9|#FFE4B5|#FFDEAD|#F5DEB3
-6,sage_teal_earthy,4,both,earthy,"nature, soft, bright",#D8E2DC|#A4C3B2|#6B9080|#2E4C3B
+48,blush_rust_gentle,5,both,gentle,"blush, vintage, warm",#F2798F|#D96C75|#D99F9A|#F2B6A0|#8C5161
+22,sunset_crimson_warm,5,both,warm,"citrus, bright",#C70039|#FF5733|#FF8D1A|#FFC300|#DAF7A6
+37,candy_dive_lively,6,both,lively,"vibrant, aquatic, juicy",#F26D78|#F2ACAC|#F2CA7E|#99E2F2|#03738C|#4E5069
+35,ember_wave_vibrant,5,both,vibrant,"contrast, pop, fire",#BF303C|#F26D3D|#F2811D|#034959|#DFE5F2
+42,ember_blossom_hot,4,both,hot,"red, fiery, intense",#D92938|#F25C05|#F2AB6D|#730237
+46,skylight_coral_bright,5,both,bright,"aqua, cheerful, crisp",#FD8F91|#F2DC99|#7ED1F2|#1F72A6|#153959
+11,monolith_vintage_moody,4,both,moody,"retro, faded, contrast",#8C2020|#F2F0F0|#261909|#7C96A6
+1,rosecoal_blush_contrast,5,both,contrast,"rosy, bold, dark",#F25C5C|#BF6060|#F2ADA7|#404040|#F2E4DC
+25,neon_circuits_bright,4,both,bright,"vivid, playful, synthetic",#FF8080|#FFE480|#80FFA4|#808BFF
+2,melon_flame_bright,5,both,bright,"peach, vivid, playful",#BF3326|#F26F63|#F2BBAE|#F2916D|#F2BE7E
+26,ember_wave_maritime,6,both,bold,"marine, ember, striking",#D83D26|#8E3018|#FC9A6C|#5898AE|#056A8A|#123A5E
+28,ash_rose_moody,5,both,moody,"dusky, desaturated, vintage",#59231E|#F2B6A0|#8A8C80|#4F5950|#8C5161
+16,emberwood_sienna_deep,5,both,deep,"charcoal, sienna, rustic",#592925|#BF5A36|#8C513B|#F2E0C9|#26181F
+4,sunset_mocha_rich,5,both,rich,"burnt, creamy, dusk",#D8503D|#26211F|#EB965F|#EEBB78|#ECD7B2
+43,candy_dusk_playful,5,both,playful,"pink, sunset, fruity",#F2887E|#F2AE72|#7C68A6|#D9599F|#F285A2
+41,cosmic_purple_warm,7,both,vibrant,"retro, layered, sunset",#F2BFBB|#E88A31|#59594F|#1B445E|#6C3973|#260120|#D95578
+15,canyon_embers_rich,5,both,rich,"mineral, fiery, grounded",#D94929|#26201F|#73341D|#77A69D|#195959
+18,canyon_mint_bold,5,both,bold,"mineral, desert, lively",#D94929|#D9965B|#F2DEC4|#77A69D|#195959
+20,sunset_surf_bold,7,both,bold,"tropical, vibrant, contrast",#E25337|#F57E39|#F6A43E|#FFDBA1|#008177|#022E40|#02455F
+9,sage_stone_subtle,5,both,subtle,"soft, earthy, neutral",#D9B7B4|#D9C2A7|#BBBF9F|#858C69|#495942
+7,bauhaus_pop_bold,5,both,bold,"graphic, modern, retro",#F25835|#0D0D0D|#F29422|#F2E3D0|#4E8DA6
+30,heritage_marine_rich,5,both,rich,"classic, nautical, muted",#8C3C2A|#BFA98E|#9AC1D9|#0D4373|#092140
+27,copper_mist_balanced,6,both,balanced,"coastal, warm, composed",#B94C2E|#A07161|#FBE3C1|#74B4B3|#205162|#5D9BC4
+14,bauhaus_sand_bright,5,both,bright,"graphic, modern, punchy",#D95323|#F2A950|#F2BA52|#F2F1DF|#7693A6
+10,terracotta_fade_warm,5,both,warm,"burnt, clay, evening",#59291E|#A64521|#BF6430|#D9AB82|#4D6473
+3,spiced_clay_warm,5,both,warm,"baked, natural, dense",#A6401B|#0D0807|#A6511F|#BF8049|#D9B391
+6,copper_olive_warm,5,both,warm,"autumn, rustic, organic",#F28066|#A66E29|#534942|#F2C46D|#7A8C51
+12,mocha_blush_gentle,5,both,gentle,"muted, pastel, warm",#BF6550|#D9886A|#F2C3A7|#F2EADF|#656A73
+38,twilight_sky_cool,5,both,cool,"blue, icy, luminous",#F2F2F2|#6DBFF2|#4B7DBF|#375CA6|#23338C
+44,lavender_void_dreamy,5,both,dreamy,"purple, soft, haze",#F2F2F2|#9195D9|#E0DFF2|#2B1E59|#7F66D9
+47,mauve_twilight_dreamy,5,both,dreamy,"soft, nocturnal, muted",#D9D9D9|#1E3040|#404373|#8E76A6|#D9C5D7
+19,coastal_clay_calm,5,both,calm,"coastal, natural, soft",#A66151|#8C543F|#F2F0EB|#77A1A6|#013440
+29,driftwood_fog_moody,5,both,moody,"coastal, stormy, subdued",#8C5E4D|#D9D4D0|#4C6473|#58788C|#0A1B26
+17,citrus_olive_savory,5,both,savory,"green, amber, balanced",#BF6A39|#F2A341|#B5BF8F|#7F8C7D|#114037
+8,grove_earth_warm,5,both,earthy,"green, muted, grounded",#D97A43|#D98B48|#F2E0C9|#505942|#1B2619
+24,inkstone_peach_muted,5,both,muted,"dusty, slate, warm",#F29E6D|#BF7D56|#F2AB6D|#656F8C|#2C3140
+13,woodland_gold_earthy,5,both,earthy,"forest, golden, grounded",#592F0A|#A6783F|#F2D0A7|#8DA686|#45593F
+32,meadow_sienna_calm,5,both,calm,"earthy, tranquil, vintage",#BF8561|#EED9A0|#025940|#64AB97|#0D040B
+31,pop_pastel_neon,4,both,bright,"pastel, playful, pop",#FFC199|#EAFF99|#99FAFF|#DB99FF
+23,fantastic_4_fs,5,both,mystical,"cosmic, dreamy, layered",#BF7C41|#F2BE22|#F2E8D5|#0C4459|#1F77B6
+39,lagoon_slate_fresh,6,both,fresh,"marine, teal, faded",#8C786C|#A2F2BE|#56A697|#195359|#123340|#604F55
+21,stone_coast_neutral,5,both,neutral,"beach, natural, aged",#8C694A|#D9BFA0|#F2E9D8|#64858C|#183140
+5,sunrise_teal_gentle,4,both,gentle,"dawn, soft",#FFDAB9|#FFDEAD|#FFE4B5|#F5DEB3
+40,twilight_blues_soft,4,both,soft,"graphic, modern, faded",#F2E6D8|#8DA6F2|#415AA6|#0E2159
+33,forest_muted_earthy,4,light,earthy,"nature, calm",#8FBC8F|#014421|#2E8B57|#66CDAA
+34,sage_teal_earthy,4,both,earthy,"nature, soft, bright",#2E4C3B|#D8E2DC|#A4C3B2|#6B9080
+36,silver_sage_soft,5,both,soft,"sage, clean, airy",#8EBFA8|#7BA692|#D5F2E5|#3F5759|#9FBCBF
+45,ocean_muted_cool,4,dark,cool,"marine, deep",#39CCCC|#7FDBFF|#001F3F|#0074D9
+50,dusty_rose_moody,5,both,moody,"rose, muted, twilight",#242E49|#574964|#6E546D|#B18A9A|#FFE0E6
+49,violetstorm_muted_moody,5,dark,moody,"purple, storm",#3D2C8D|#5C4D99|#7D6BBA|#C6BCE4|#A89CC8

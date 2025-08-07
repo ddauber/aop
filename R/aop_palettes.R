@@ -15,32 +15,11 @@
 #' }
 #' @keywords internal
 aop_palettes <- tibble::tibble(
-  id = c(1, 2, 3, 4, 5, 6),
-  name = c(
-    "sunset_crimson_warm",
-    "ocean_muted_cool",
-    "forest_muted_earthy",
-    "violetstorm_muted_moody",
-    "sunrise_teal_gentle",
-    "sage_teal_earthy"
-  ),
-  length = c(5, 4, 4, 5, 4, 4),
-  mode = c("both", "dark", "light", "dark", "both", "both"),
-  mood = c("warm", "cool", "earthy", "moody", "gentle", "earthy"),
-  tags = list(
-    c("citrus", "bright"),
-    c("marine", "deep"),
-    c("nature", "calm"),
-    c("purple", "storm"),
-    c("dawn", "soft"),
-    c("nature", "soft", "bright")
-  ),
-  hex = list(
-    c("#FF5733", "#FF8D1A", "#FFC300", "#DAF7A6", "#C70039"),
-    c("#001F3F", "#0074D9", "#7FDBFF", "#39CCCC"),
-    c("#014421", "#2E8B57", "#66CDAA", "#8FBC8F"),
-    c("#3D2C8D", "#5C4D99", "#7D6BBA", "#A89CC8", "#C6BCE4"),
-    c("#FFDAB9", "#FFE4B5", "#FFDEAD", "#F5DEB3"),
-    c("#D8E2DC", "#A4C3B2", "#6B9080", "#2E4C3B")
-  )
+  id = c(48, 22, 37, 35, 42, 46, 11, 1, 25, 2, 26, 28, 16, 4, 43, 41, 15, 18, 20, 9, 7, 30, 27, 14, 10, 3, 6, 12, 38, 44, 47, 19, 29, 17, 8, 24, 13, 32, 31, 23, 39, 21, 5, 40, 33, 34, 36, 45, 50, 49),
+  name = c("blush_rust_gentle", "sunset_crimson_warm", "candy_dive_lively", "ember_wave_vibrant", "ember_blossom_hot", "skylight_coral_bright", "monolith_vintage_moody", "rosecoal_blush_contrast", "neon_circuits_bright", "melon_flame_bright", "ember_wave_maritime", "ash_rose_moody", "emberwood_sienna_deep", "sunset_mocha_rich", "candy_dusk_playful", "cosmic_purple_warm", "canyon_embers_rich", "canyon_mint_bold", "sunset_surf_bold", "sage_stone_subtle", "bauhaus_pop_bold", "heritage_marine_rich", "copper_mist_balanced", "bauhaus_sand_bright", "terracotta_fade_warm", "spiced_clay_warm", "copper_olive_warm", "mocha_blush_gentle", "twilight_sky_cool", "lavender_void_dreamy", "mauve_twilight_dreamy", "coastal_clay_calm", "driftwood_fog_moody", "citrus_olive_savory", "grove_earth_warm", "inkstone_peach_muted", "woodland_gold_earthy", "meadow_sienna_calm", "pop_pastel_neon", "fantastic_4_fs", "lagoon_slate_fresh", "stone_coast_neutral", "sunrise_teal_gentle", "twilight_blues_soft", "forest_muted_earthy", "sage_teal_earthy", "silver_sage_soft", "ocean_muted_cool", "dusty_rose_moody", "violetstorm_muted_moody"),
+  length = c(5, 5, 6, 5, 4, 5, 4, 5, 4, 5, 6, 5, 5, 5, 5, 7, 5, 5, 7, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 6, 5, 4, 4, 4, 4, 5, 4, 5, 5),
+  mode = c("both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "both", "light", "both", "both", "dark", "both", "dark"),
+  mood = c("gentle", "warm", "lively", "vibrant", "hot", "bright", "moody", "contrast", "bright", "bright", "bold", "moody", "deep", "rich", "playful", "vibrant", "rich", "bold", "bold", "subtle", "bold", "rich", "balanced", "bright", "warm", "warm", "warm", "gentle", "cool", "dreamy", "dreamy", "calm", "moody", "savory", "earthy", "muted", "earthy", "calm", "bright", "mystical", "fresh", "neutral", "gentle", "soft", "earthy", "earthy", "soft", "cool", "moody", "moody"),
+  tags = list(c("blush", "vintage", "warm"), c("citrus", "bright"), c("vibrant", "aquatic", "juicy"), c("contrast", "pop", "fire"), c("red", "fiery", "intense"), c("aqua", "cheerful", "crisp"), c("retro", "faded", "contrast"), c("rosy", "bold", "dark"), c("vivid", "playful", "synthetic"), c("peach", "vivid", "playful"), c("marine", "ember", "striking"), c("dusky", "desaturated", "vintage"), c("charcoal", "sienna", "rustic"), c("burnt", "creamy", "dusk"), c("pink", "sunset", "fruity"), c("retro", "layered", "sunset"), c("mineral", "fiery", "grounded"), c("mineral", "desert", "lively"), c("tropical", "vibrant", "contrast"), c("soft", "earthy", "neutral"), c("graphic", "modern", "retro"), c("classic", "nautical", "muted"), c("coastal", "warm", "composed"), c("graphic", "modern", "punchy"), c("burnt", "clay", "evening"), c("baked", "natural", "dense"), c("autumn", "rustic", "organic"), c("muted", "pastel", "warm"), c("blue", "icy", "luminous"), c("purple", "soft", "haze"), c("soft", "nocturnal", "muted"), c("coastal", "natural", "soft"), c("coastal", "stormy", "subdued"), c("green", "amber", "balanced"), c("green", "muted", "grounded"), c("dusty", "slate", "warm"), c("forest", "golden", "grounded"), c("earthy", "tranquil", "vintage"), c("pastel", "playful", "pop"), c("cosmic", "dreamy", "layered"), c("marine", "teal", "faded"), c("beach", "natural", "aged"), c("dawn", "soft"), c("graphic", "modern", "faded"), c("nature", "calm"), c("nature", "soft", "bright"), c("sage", "clean", "airy"), c("marine", "deep"), c("rose", "muted", "twilight"), c("purple", "storm")),
+  hex = list(c("#F2798F", "#D96C75", "#D99F9A", "#F2B6A0", "#8C5161"), c("#C70039", "#FF5733", "#FF8D1A", "#FFC300", "#DAF7A6"), c("#F26D78", "#F2ACAC", "#F2CA7E", "#99E2F2", "#03738C", "#4E5069"), c("#BF303C", "#F26D3D", "#F2811D", "#034959", "#DFE5F2"), c("#D92938", "#F25C05", "#F2AB6D", "#730237"), c("#FD8F91", "#F2DC99", "#7ED1F2", "#1F72A6", "#153959"), c("#8C2020", "#F2F0F0", "#261909", "#7C96A6"), c("#F25C5C", "#BF6060", "#F2ADA7", "#404040", "#F2E4DC"), c("#FF8080", "#FFE480", "#80FFA4", "#808BFF"), c("#BF3326", "#F26F63", "#F2BBAE", "#F2916D", "#F2BE7E"), c("#D83D26", "#8E3018", "#FC9A6C", "#5898AE", "#056A8A", "#123A5E"), c("#59231E", "#F2B6A0", "#8A8C80", "#4F5950", "#8C5161"), c("#592925", "#BF5A36", "#8C513B", "#F2E0C9", "#26181F"), c("#D8503D", "#26211F", "#EB965F", "#EEBB78", "#ECD7B2"), c("#F2887E", "#F2AE72", "#7C68A6", "#D9599F", "#F285A2"), c("#F2BFBB", "#E88A31", "#59594F", "#1B445E", "#6C3973", "#260120", "#D95578"), c("#D94929", "#26201F", "#73341D", "#77A69D", "#195959"), c("#D94929", "#D9965B", "#F2DEC4", "#77A69D", "#195959"), c("#E25337", "#F57E39", "#F6A43E", "#FFDBA1", "#008177", "#022E40", "#02455F"), c("#D9B7B4", "#D9C2A7", "#BBBF9F", "#858C69", "#495942"), c("#F25835", "#0D0D0D", "#F29422", "#F2E3D0", "#4E8DA6"), c("#8C3C2A", "#BFA98E", "#9AC1D9", "#0D4373", "#092140"), c("#B94C2E", "#A07161", "#FBE3C1", "#74B4B3", "#205162", "#5D9BC4"), c("#D95323", "#F2A950", "#F2BA52", "#F2F1DF", "#7693A6"), c("#59291E", "#A64521", "#BF6430", "#D9AB82", "#4D6473"), c("#A6401B", "#0D0807", "#A6511F", "#BF8049", "#D9B391"), c("#F28066", "#A66E29", "#534942", "#F2C46D", "#7A8C51"), c("#BF6550", "#D9886A", "#F2C3A7", "#F2EADF", "#656A73"), c("#F2F2F2", "#6DBFF2", "#4B7DBF", "#375CA6", "#23338C"), c("#F2F2F2", "#9195D9", "#E0DFF2", "#2B1E59", "#7F66D9"), c("#D9D9D9", "#1E3040", "#404373", "#8E76A6", "#D9C5D7"), c("#A66151", "#8C543F", "#F2F0EB", "#77A1A6", "#013440"), c("#8C5E4D", "#D9D4D0", "#4C6473", "#58788C", "#0A1B26"), c("#BF6A39", "#F2A341", "#B5BF8F", "#7F8C7D", "#114037"), c("#D97A43", "#D98B48", "#F2E0C9", "#505942", "#1B2619"), c("#F29E6D", "#BF7D56", "#F2AB6D", "#656F8C", "#2C3140"), c("#592F0A", "#A6783F", "#F2D0A7", "#8DA686", "#45593F"), c("#BF8561", "#EED9A0", "#025940", "#64AB97", "#0D040B"), c("#FFC199", "#EAFF99", "#99FAFF", "#DB99FF"), c("#BF7C41", "#F2BE22", "#F2E8D5", "#0C4459", "#1F77B6"), c("#8C786C", "#A2F2BE", "#56A697", "#195359", "#123340", "#604F55"), c("#8C694A", "#D9BFA0", "#F2E9D8", "#64858C", "#183140"), c("#FFDAB9", "#FFDEAD", "#FFE4B5", "#F5DEB3"), c("#F2E6D8", "#8DA6F2", "#415AA6", "#0E2159"), c("#8FBC8F", "#014421", "#2E8B57", "#66CDAA"), c("#2E4C3B", "#D8E2DC", "#A4C3B2", "#6B9080"), c("#8EBFA8", "#7BA692", "#D5F2E5", "#3F5759", "#9FBCBF"), c("#39CCCC", "#7FDBFF", "#001F3F", "#0074D9"), c("#242E49", "#574964", "#6E546D", "#B18A9A", "#FFE0E6"), c("#3D2C8D", "#5C4D99", "#7D6BBA", "#C6BCE4", "#A89CC8"))
 )

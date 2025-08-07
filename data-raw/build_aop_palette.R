@@ -10,11 +10,32 @@ library(dplyr)
 library(stringr)
 
 # Read the CSV file ----
-meta <- read_csv("data-raw/aop_palette_db.csv", show_col_types = FALSE) |>
+meta <- read_csv(
+  "data-raw/aop_palette_db_sorted_by_hue.csv",
+  show_col_types = FALSE
+) |>
   mutate(
     hex = str_split(hex, "\\|") |> purrr::map(~ toupper(.x)),
     tags = str_split(tags, ",\\s*")
+  ) |>
+  # Sort each palette by hue
+  mutate(
+    hex = purrr::map(hex, aop::sort_colours)
   )
+message("✅ Palette colours sorted by hue.")
+
+# Sort entire tibble by the hue of the first colour in each palette
+meta <- meta |>
+  mutate(
+    rgb_first = purrr::map(hex, ~ t(grDevices::col2rgb(.x[1]))),
+    hcl_first = purrr::map(
+      rgb_first,
+      ~ farver::convert_colour(.x, from = "rgb", to = "hcl")
+    ),
+    hue_first = purrr::map_dbl(hcl_first, ~ .x[, 1])
+  ) |>
+  arrange(hue_first) |>
+  select(-rgb_first, -hcl_first, -hue_first)
 
 # EXPORT FUNCTION: EXPORTING THE FILE AFTER DATA CLEANING ----
 export_palette_meta <- function(meta, path = "data-raw/aop_palette_db.csv") {
